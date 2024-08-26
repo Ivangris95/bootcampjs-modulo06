@@ -1,0 +1,233 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(/src/img/montaña.jpg);
+}
+.card img {
+  border-radius: 17px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+}
+.contenedor {
+  position: relative;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 400px;
+}
+.card{
+  position: absolute;
+    border-radius: 10px;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    backface-visibility: hidden;
+    animation: animacion 2s ease-in-out 1;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+@keyframes animacion {
+  0% {
+      transform: translateX(0) rotate(0deg);
+  }
+  25% {
+      transform: translateX(-50px) rotate(-15deg);
+  }
+  50% {
+      transform: translateX(0) rotate(0deg);
+  }
+  75% {
+      transform: translateX(50px) rotate(15deg);
+  }
+  100% {
+      transform: translateX(0) rotate(0deg);
+  }
+}
+.contenedorCarta {
+  margin-bottom: 20px;
+}
+
+.contenedorCarta button{
+  background-color: #213547;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.contenedorCarta button:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: #f9f9f9;
+}
+
+.contenedorPlantarse{
+  margin-bottom: 20px;
+}
+
+.contenedorPlantarse button{
+  background-color: #213547;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.contenedorPlantarse button:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: #f9f9f9;
+}
+
+
+
+.contenedorFuturo button{
+  background-color: #213547;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.contenedorFuturo button:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: #f9f9f9;
+}
+
+#habriaPasado {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.puntuacion {
+  font-size: 40px;
+  text-align: center;
+}
+.mensaje {
+  margin-bottom: 20px;
+}
+.card button{
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  width: 209px;
+  height: 320px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 50px 20px 50px 20px;
+  font-size: 20px;
+  font-weight: 800;
+}
+#reset {
+  display: none;
+  z-index: 2;
+}
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #3178c6aa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
