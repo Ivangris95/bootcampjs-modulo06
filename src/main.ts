@@ -1,8 +1,5 @@
-import {
-  muestraPuntuacion,
-  handleCompruebaClick,
-  handlePlantarseClick,
-} from "./ui";
+import { handleCompruebaClick, handlePlantarseClick } from "./motor";
+import { muestraPuntuacion } from "./ui";
 
 document.addEventListener("DOMContentLoaded", muestraPuntuacion);
 
