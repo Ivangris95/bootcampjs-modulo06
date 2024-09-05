@@ -1,4 +1,5 @@
 import { partida } from "./modelo";
+import { calcularMensajeAlPlantarse } from "./motor";
 
 export const obtenerUrl = (carta: number): string => {
   switch (carta) {
@@ -24,18 +25,6 @@ export const obtenerUrl = (carta: number): string => {
       return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg";
     default:
       return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
-  }
-};
-
-export const calcularMensaje = (puntuacion: number): string => {
-  if (puntuacion < 4) {
-    return "Has sido muy conservador 🐔";
-  } else if (puntuacion === 5) {
-    return "Te ha entrado el cangelo 😰";
-  } else if (puntuacion === 7.5) {
-    return "¡¡ Lo has clavado !! Enhorabuenea 🎖️ ";
-  } else {
-    return "Casi, casi 👍";
   }
 };
 
@@ -84,19 +73,11 @@ export const gameOver = () => {
   nuevaPartida();
 };
 
-export const gestionarPartida = () => {
-  if (partida.puntuacion === 7.5) {
-    partida.mensaje = "¡¡ Lo has clavado !! Enhorabuenea 🎖️ ";
-    gameOver();
-  }
-
-  if (partida.puntuacion > 7.5) {
-    partida.mensaje = "GAME OVER 💀. Intentalo otra vez.";
-    gameOver();
-  }
+export const mensajeFinal = (elemento: string) => {
   const elementoMensaje = document.getElementById("mensaje");
+
   if (elementoMensaje && elementoMensaje instanceof HTMLDivElement) {
-    elementoMensaje.innerHTML = partida.mensaje;
+    elementoMensaje.innerHTML = elemento;
   }
 };
 
@@ -111,7 +92,7 @@ export const queHabriaPasado = () => {
   }
 };
 
-export const actualizarPlantarseDOM = (
+const actualizarPlantarseDOM = (
   boton: HTMLButtonElement,
   mensaje: HTMLDivElement,
   nuevoMensaje: string
@@ -130,7 +111,7 @@ export const mensajePlantarase = () => {
     elementoMensaje &&
     elementoMensaje instanceof HTMLDivElement
   ) {
-    const nuevoMensaje = calcularMensaje(partida.puntuacion);
+    const nuevoMensaje = calcularMensajeAlPlantarse(partida.puntuacion);
     actualizarPlantarseDOM(elementoCarta, elementoMensaje, nuevoMensaje);
   }
 };

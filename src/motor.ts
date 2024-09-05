@@ -6,22 +6,20 @@ import {
   obtenerUrl,
   mostrarCarta,
   muestraPuntuacion,
-  gestionarPartida,
+  mensajeFinal,
+  gameOver,
 } from "./ui";
 
-export const generarNumeroAleatorio = (): number => {
-  return Math.floor(Math.random() * 11);
+const generarNumeroAleatorio = () => {
+  partida.numeroAleatorio = Math.round(Math.random() * 11);
 };
 
-export const generarNumeroCarta = (numeroAleatorio: number): number => {
-  if (numeroAleatorio > 7) {
-    return numeroAleatorio + 2;
-  }
-  if (numeroAleatorio === 0) {
-    return numeroAleatorio + 1;
+export const generarNumeroCarta = (): number => {
+  if (partida.numeroAleatorio > 7) {
+    return partida.numeroAleatorio + 2;
   }
 
-  return numeroAleatorio;
+  return partida.numeroAleatorio;
 };
 
 export const obtenerPuntosCarta = (carta: number): number => {
@@ -31,11 +29,37 @@ export const obtenerPuntosCarta = (carta: number): number => {
   return carta;
 };
 
-export const sumarPuntuacion = (puntosCarta: number) => {
+export const gestionarMensajePartida = (puntuacion: number): string => {
+  if (puntuacion === partida.numeroParaGanar) {
+    return "¡¡ Lo has clavado !! Enhorabuenea 🎖️ ";
+  }
+  if (puntuacion > partida.numeroParaGanar) {
+    return "GAME OVER 💀. Intentalo otra vez.";
+  }
+  return "¿Continuar o plantarse? 🧐";
+};
+
+const gestionarPartida = () => {
+  if (partida.puntuacion >= partida.numeroParaGanar) {
+    gameOver();
+  }
+};
+
+export const calcularMensajeAlPlantarse = (puntuacion: number): string => {
+  if (puntuacion < 4) {
+    return "Has sido muy conservador 🐔";
+  } else if (puntuacion === 5) {
+    return "Te ha entrado el cangelo 😰";
+  } else {
+    return "Casi, casi 👍";
+  }
+};
+
+const sumarPuntuacion = (puntosCarta: number) => {
   return partida.puntuacion + puntosCarta;
 };
 
-export const actualizarPuntuacion = (nuevosPuntos: number) => {
+const actualizarPuntuacion = (nuevosPuntos: number) => {
   partida.puntuacion = nuevosPuntos;
 };
 
@@ -45,22 +69,24 @@ export const handlePlantarseClick = () => {
   nuevaPartida();
 };
 
-export const manejarCartaNueva = (): number => {
-  const numeroAleatorio = generarNumeroAleatorio();
-  const carta = generarNumeroCarta(numeroAleatorio);
+const manejarCartaNueva = (): number => {
+  generarNumeroAleatorio();
+  const carta = generarNumeroCarta();
   const urlCarta = obtenerUrl(carta);
   mostrarCarta(urlCarta);
   return obtenerPuntosCarta(carta);
 };
 
-export const manejarPuntuacion = (puntosCarta: number) => {
+const manejarPuntuacion = (puntosCarta: number) => {
   const puntosSumados = sumarPuntuacion(puntosCarta);
   actualizarPuntuacion(puntosSumados);
   muestraPuntuacion();
-  gestionarPartida();
 };
 
 export const handleCompruebaClick = () => {
   const puntosCarta = manejarCartaNueva();
   manejarPuntuacion(puntosCarta);
+  const elemento = gestionarMensajePartida(partida.puntuacion);
+  mensajeFinal(elemento);
+  gestionarPartida();
 };
