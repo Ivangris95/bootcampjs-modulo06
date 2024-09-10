@@ -55,7 +55,7 @@ export const nuevaPartida = () => {
   }
 };
 
-export const gameOver = () => {
+export const disabledBotton = () => {
   const elementoCarta = document.getElementById("dameCarta");
   const elementoPlantarse = document.getElementById("plantarse");
   if (

@@ -7,7 +7,7 @@ import {
   mostrarCarta,
   muestraPuntuacion,
   mensajeFinal,
-  gameOver,
+  disabledBotton,
 } from "./ui";
 
 const generarNumeroAleatorio = () => {
@@ -41,7 +41,7 @@ export const gestionarMensajePartida = (puntuacion: number): string => {
 
 const gestionarPartida = () => {
   if (partida.puntuacion >= partida.numeroParaGanar) {
-    gameOver();
+    disabledBotton();
   }
 };
 
